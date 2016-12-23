@@ -1,0 +1,30 @@
+#debug: true
+
+# PROFILES 测试接口
+## dev | prod | trds
+spring:
+  profiles.active: dev
+  cloud:
+    config:
+      enabled: true
+      label: develop
+      name : crawlerService
+      uri: http://192.168.1.213:8000
+  main:
+    banner-mode: OFF
+---
+spring:
+   profiles: test
+   cloud:
+      config:
+         label: develop
+---
+spring:
+   profiles: prod
+   cloud:
+      config:
+         label: master
+
+endpoints:
+  refresh:
+    enabled:

@@ -1,0 +1,29 @@
+#debug: true
+
+# PROFILES 测试接口
+## dev | prod | trds
+spring:
+  profiles.active: dev
+  cloud:
+    config:
+      enabled: true
+      label: develop
+      name : tradeService
+      uri: http://localhost:8000
+    stream:
+      bindings:
+        input:
+          destination: testtock
+---
+spring:
+   profiles: test
+   cloud:
+      config:
+         label: develop
+---
+spring:
+   profiles: prod
+   cloud:
+      config:
+         label: master
+
